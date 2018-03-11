@@ -1,5 +1,6 @@
 package pages;
 
+import driver.DriverFactory;
 import org.openqa.selenium.WebDriver;
 
 public class BasePage<T extends PageObjectRepository> {
@@ -7,8 +8,9 @@ public class BasePage<T extends PageObjectRepository> {
     protected WebDriver webDriver;
     protected T repository;
 
-    public BasePage(WebDriver webDriver, T repository) {
-        this.webDriver = webDriver;
+    public BasePage(T repository) {
+        this.webDriver = DriverFactory.getInstance().getDriver();
         this.repository = repository;
     }
+
 }
