@@ -14,6 +14,10 @@ public class LoginPage extends BasePage<LoginPageObjectRepository>{
         clickSignIn();
     }
 
+    public boolean isAuthenticationFailed() {
+        return isElementPresent(repository.authenticationFailedLabel);
+    }
+
     private LoginPage enterEmailAddress(String emailaddress) {
         webDriver.findElement(repository.emailAddressTextField).sendKeys(emailaddress);
         return this;

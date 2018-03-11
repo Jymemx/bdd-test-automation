@@ -8,6 +8,7 @@ import driver.DriverFactory;
 import pages.automation_practice.HomePage;
 import pages.automation_practice.LoginPage;
 
+import static org.testng.Assert.assertTrue;
 import static utils.Wait.waitFor;
 
 public class LoginSteps {
@@ -35,11 +36,12 @@ public class LoginSteps {
 
     @Then("^the user should not be able to log in$")
     public void the_user_should_not_be_able_to_log_in() {
+        assertTrue(loginPage.isAuthenticationFailed(), "Authentication Failed message not displayed");
     }
 
     @After
     public void closeDriver() {
-        waitFor(5);
+        waitFor(3);
         DriverFactory.getInstance().removeDriver();
     }
 }
