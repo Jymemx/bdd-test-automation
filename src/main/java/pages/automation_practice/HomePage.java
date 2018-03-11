@@ -1,13 +1,14 @@
 package pages.automation_practice;
 
-import org.openqa.selenium.WebDriver;
-import org.picocontainer.annotations.Inject;
 import pages.BasePage;
 
 public class HomePage extends BasePage<HomePageObjectRepository> {
 
-    public HomePage(HomePageObjectRepository repository) {
+    LoginPage loginPage;
+
+    public HomePage(HomePageObjectRepository repository, LoginPage loginPage) {
         super(repository);
+        this.loginPage = loginPage;
     }
 
     public HomePage load() {
@@ -15,4 +16,8 @@ public class HomePage extends BasePage<HomePageObjectRepository> {
         return this;
     }
 
+    public LoginPage goToLoginPage() {
+        webDriver.findElement(repository.signInButton).click();
+        return loginPage;
+    }
 }
